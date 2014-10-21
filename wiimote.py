@@ -42,5 +42,5 @@ class Wiimote:
 		wiimote.led = 6
 		wiimote.rpt_mode = cwiid.RPT_BTN
 
-	def get_buttons():
-		return wiimote.state['buttons']
+	def is_pressed(button)
+		return (wiimote.state['buttons'] & cwiid.BTN_LEFT)
