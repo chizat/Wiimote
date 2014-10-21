@@ -7,14 +7,17 @@ import time
 class Wiimote:
 
 	wiimote = ""
-
-	def connect_wiimote(self):
+	
+	def connect(self):
 		try:
 			print 'Press 1 + 2 on your Wii Remote now ...'
 			time.sleep(1)
 			self.wiimote = cwiid.Wiimote()
 		except RuntimeError:
-			return connect_wimote()
+			self.connect()
+	
+	def connect_wiimote(self):
+		self.connect()
 
 		print 'Wii Remote connected...\n'
 		self.wiimote.led = 6
@@ -25,7 +28,7 @@ class Wiimote:
 			self.wiimote.request_status()
 		except RuntimeError:
 			print "Disconnected - reconnecting"
-			self.wiimote = connect_wimote()
+			self.wiimote = connect_wiimote()
 
 	def connection_fun(self):
 		time.sleep(1)
@@ -45,4 +48,4 @@ class Wiimote:
 	def is_pressed(self, button):
 		if(self.wiimote != ""):
 			return (self.wiimote.state['buttons'] & cwiid.BTN_LEFT)
-		return false
+		return False

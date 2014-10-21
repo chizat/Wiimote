@@ -1,9 +1,10 @@
 from wiimote import Wiimote
 import cwiid
+import time
 
 wii = Wiimote()
-wii.connect_wiimote
-wii.connection_fun
+wii.connect_wiimote()
+wii.connection_fun()
 
 while True:
  
