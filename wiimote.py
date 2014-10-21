@@ -8,7 +8,7 @@ class Wiimote:
 
 	wiimote = ""
 
-	def connect_wimote():
+	def connect_wiimote():
 		try:
 			print 'Press 1 + 2 on your Wii Remote now ...'
 			time.sleep(1)
