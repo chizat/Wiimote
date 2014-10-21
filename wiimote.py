@@ -44,8 +44,3 @@ class Wiimote:
 			time.sleep(.1)
 		self.wiimote.led = 6
 		self.wiimote.rpt_mode = cwiid.RPT_BTN
-
-	def is_pressed(self, button):
-		if(self.wiimote != ""):
-			return (self.wiimote.state['buttons'] & cwiid.BTN_LEFT)
-		return False
