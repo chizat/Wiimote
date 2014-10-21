@@ -1,5 +1,8 @@
 from wiimote import Wiimote
 import cwiid
+import time
+
+button_delay = 1
 
 wii = Wiimote()
 wii.connect_wiimote()
