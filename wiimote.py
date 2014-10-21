@@ -8,39 +8,39 @@ class Wiimote:
 
 	wiimote = ""
 
-	def connect_wiimote():
+	def connect_wiimote(self):
 		try:
 			print 'Press 1 + 2 on your Wii Remote now ...'
 			time.sleep(1)
-			wiimote = cwiid.Wiimote()
+			self.wiimote = cwiid.Wiimote()
 		except RuntimeError:
 			return connect_wimote()
 
 		print 'Wii Remote connected...\n'
-		wiimote.led = 6
-		wiimote.rpt_mode = cwiid.RPT_BTN
+		self.wiimote.led = 6
+		self.wiimote.rpt_mode = cwiid.RPT_BTN
 
-	def validate_connection():
+	def validate_connection(self):
 		try:
-			wiimote.request_status()
+			self.wiimote.request_status()
 		except RuntimeError:
 			print "Disconnected - reconnecting"
-			wiimote = connect_wimote()
+			self.wiimote = connect_wimote()
 
-	def connection_fun():
+	def connection_fun(self):
 		time.sleep(1)
 		for i in range(4):
-			wiimote.rumble = True
+			self.wiimote.rumble = True
 			time.sleep(.1)
-			wiimote.rumble = False
+			self.wiimote.rumble = False
 			time.sleep(.1)
-		wiimote.led = 0
+		self.wiimote.led = 0
 		time.sleep(1)
 		for i in [1, 2, 4, 8, 4, 2, 1, 2, 4, 8, 4, 2, 1, 2, 4, 8, 4, 2, 1, 0]:
-			wiimote.led = i
+			self.wiimote.led = i
 			time.sleep(.1)
-		wiimote.led = 6
-		wiimote.rpt_mode = cwiid.RPT_BTN
+		self.wiimote.led = 6
+		self.wiimote.rpt_mode = cwiid.RPT_BTN
 
-	def is_pressed(button)
-		return (wiimote.state['buttons'] & cwiid.BTN_LEFT)
+	def is_pressed(self, button)
+		return (self.wiimote.state['buttons'] & cwiid.BTN_LEFT)
